@@ -14,39 +14,42 @@ public class App{
 
       System.out.println("WELCOME IN TO-DO APP");
 
-      while (choice != 4) {
+      while (choice != 5) {
         String menu = String.format("%s\n%s\n%s\n%s\n%s\n%s\n",
-                      "0. to see your to do list.",
-                      "1. to add a new thing to your to do list.",
-                      "2. to mark an item",
-                      "3. to archive marked an item",
-                      "4. to exit the program.",
+                      "1. to see your to do list.",
+                      "2. to add a new thing to your to do list.",
+                      "3. to mark an item",
+                      "4. to archive marked an item",
+                      "5. to exit the program.",
                       "Select an option: ");
 
         System.out.print(menu);
 
         choice = input.nextInt();
-        if (choice==0){
+        if (choice==1){
+          int idx = 1;
           for (TodoItem todo: listToDo.toDoList){
-            System.out.println(todo.displayInfo());
+            System.out.println(idx + ". " + todo.displayInfo());
+            idx ++;
             }
+          System.out.println();
         }
 
-        if (choice==1){
+        if (choice==2){
           System.out.println("What you want add: ");
           Scanner sc = new Scanner(System.in);
           String toDoThing = sc.nextLine();
           listToDo.addItem(toDoThing);
         }
 
-        if (choice==2){
+        if (choice==3){
           System.out.println("Type item to mark it. ");
           Scanner sc1 = new Scanner(System.in);
           String toDoThing = sc1.nextLine();
           listToDo.markTask(toDoThing);
         }
 
-        if (choice==3){
+        if (choice==4){
           listToDo.archieveTask();
         }
     }
